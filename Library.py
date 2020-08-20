@@ -20,25 +20,13 @@ def color_match_z(wave):
 def spectrum_range(step):
     return np.arange(380.0, 760.0, step)
 
-# static const float3x3 XYZ_2_sRGB_MAT =
-# {
-# 	 3.2409699419, -1.5373831776, -0.4986107603,
-# 	-0.9692436363,  1.8759675015,  0.0415550574,
-# 	 0.0556300797, -0.2039769589,  1.0569715142,
-# };
+class Chromaticities:
+    def __init__(self, Red, Green, Blue, White):
+        super().__init__()
+        self.Red = Red
+        self.Green = Green
+        self.Blue = Blue
+        self.White = White
 
-# static const float3x3 sRGB_2_XYZ_MAT =
-# {
-# 	0.4124564, 0.3575761, 0.1804375,
-# 	0.2126729, 0.7151522, 0.0721750,
-# 	0.0193339, 0.1191920, 0.9503041,
-# };
-
-def XYZ_2_sRGB(x, y, z):
-    r = 3.2409699419 * x + -1.5373831776 * y + -0.4986107603 * z
-    g = -0.9692436363 * x + 1.8759675015 * y + 0.0415550574 * z
-    b = 0.0556300797 * x + -0.2039769589 * y + 1.0569715142 * z
-    # r = 3.2409699419 * x + -0.9692436363 * y + 0.0556300797 * z
-    # g = -1.5373831776 * x + 1.8759675015 * y + -0.2039769589 * z
-    # b = -0.4986107603 * x + 0.0415550574 * y + 1.0569715142 * z
-    return [r, g, b]
+sRGB = Chromaticities(np.array([0.64000, 0.33000]), np.array([0.30000, 0.60000]), np.array([0.15000, 0.06000]), np.array([0.31270, 0.32900]))
+Rec2020 = Chromaticities(np.array([0.70800, 0.29200]), np.array([0.17000, 0.79700]), np.array([0.13100, 0.04600]), np.array([ 0.31270, 0.32900]))
