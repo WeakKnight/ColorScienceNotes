@@ -1,2 +1,2 @@
 # ColorScienceNotes
-my notes and thoughts about color science
+https://weakknight.github.io/#Plotting%20CIE-XYZ%201931%20Color%20Gamut)
